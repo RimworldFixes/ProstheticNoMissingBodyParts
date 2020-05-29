@@ -130,9 +130,9 @@ namespace ProstheticNoMissingBodyParts
                     if (h.Part?.customLabel != null && h.def?.defName != null)
                     {
                         // true if left arm replaced with whitelisted bionic part
-                        // here we can catch an issue if label were translated
-                        return h.Part.customLabel.ToLower().Equals("left shoulder") &&
-                               armsWhitelist.Contains(h.def.defName);
+                        return h.Part.def.defName.Equals("Shoulder") &&
+                               armsWhitelist.Contains(h.def.defName) &&
+                               BodyPartUtils.ExistsDeep(h.Part, "LeftHand");
                     }
 
                     return false;
@@ -148,9 +148,9 @@ namespace ProstheticNoMissingBodyParts
                     if (h.Part?.customLabel != null && h.def?.defName != null)
                     {
                         // true if any right arm replaced with whitelisted bionic part
-                        // here we can catch an issue if label were translated                        
-                        return h.Part.customLabel.ToLower().Equals("right shoulder") &&
-                               armsWhitelist.Contains(h.def.defName);
+                        return h.Part.def.defName.Equals("Shoulder") &&
+                               armsWhitelist.Contains(h.def.defName) &&
+                               BodyPartUtils.ExistsDeep(h.Part, "RightHand");
                     }
 
                     return false;

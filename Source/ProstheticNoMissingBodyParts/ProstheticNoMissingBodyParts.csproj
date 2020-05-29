@@ -36,7 +36,7 @@
           <HintPath>packages\Lib.Harmony.2.0.0.8\lib\net472\0Harmony.dll</HintPath>
           <Private>False</Private>
         </Reference>
-        <Reference Include="Assembly-CSharp, Version=1.1.7429.26553, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="Assembly-CSharp, Version=1.1.7452.26840, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
           <Private>False</Private>
         </Reference>
@@ -59,6 +59,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="BodyPartUtils.cs" />
         <Compile Include="HarmonyPatches.cs" />
         <Compile Include="ModSettings.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
