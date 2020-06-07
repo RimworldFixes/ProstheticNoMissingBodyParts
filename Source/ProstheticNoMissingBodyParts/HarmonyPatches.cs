@@ -103,22 +103,42 @@ namespace ProstheticNoMissingBodyParts
 
             foreach (var g in groups)
             {
-                switch (g.defName)
+                if (g.defName.Equals("LeftHand"))
                 {
-                    case "LeftHand":
-                        // really this for fingers :) 
-                        isLeftHand = true;
-                        break;
-                    case "RightHand":
-                        // and this too
-                        isRightHand = true;
-                        break;
-                    case "Hands":
-                        isHands = true;
-                        break;
-                    case "Feet":
-                        isFeet = true;
-                        break;
+                    isLeftHand = true;
+                    break;
+                }
+
+                if (g.defName.Equals("RightHand"))
+                {
+                    isRightHand = true;
+                    break;
+                }
+                
+                if (g.defName.Equals("Hands"))
+                {
+                    isHands = true;
+                    break;
+                }
+                
+                if (g.defName.Equals("Feet"))
+                {
+                    isFeet = true;
+                    break;
+                }
+
+                var body = p.def.race.body.AllParts;
+                
+                if (BodyPartUtils.ExistsByGroupAndParent(body, "Shoulder", g.defName))
+                {
+                    isHands = true;
+                    break;
+                }
+                
+                if (BodyPartUtils.ExistsByGroupAndParent(body, "Leg", g.defName))
+                {
+                    isFeet = true;
+                    break;
                 }
             }
             

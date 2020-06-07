@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace ProstheticNoMissingBodyParts
@@ -13,6 +14,14 @@ namespace ProstheticNoMissingBodyParts
             return part.parts != null &&
                    // recursive check for nested parts
                    Enumerable.Any(part.parts, nestedPart => ExistsDeep(nestedPart, groupDefName));
+        }
+
+        public static bool ExistsByGroupAndParent(List<BodyPartRecord> parts, string parentDefName, string groupDefName)
+        {
+            var parentParts = parts.FindAll((x) =>
+                x.def?.defName != null && x.def.defName.Equals(parentDefName)
+            );
+            return parentParts.Exists((x) => ExistsDeep(x, groupDefName));
         }
     }
 }
